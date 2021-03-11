@@ -1,0 +1,18 @@
+version: v1.0
+name: Pipeline 2
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804
+blocks:
+  - name: Push Containers To Docker Hub
+    task:
+      jobs:
+        - name: 'Push Containers'
+          commands:
+            - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+            # Take those images and push them to docker hub
+            - docker push rohangit/multi-docker-client
+            - docker push rohangit/multi-docker-nginx
+            - docker push rohangit/multi-docker-server
+            - docker push rohangit/multi-docker-worker
