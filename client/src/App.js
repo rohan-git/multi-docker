@@ -21,13 +21,13 @@ function App() {
             >
             Learn React
           </a>
-          <Link to="/fib">Home</Link>
+          <Link to="/">Home</Link>
           <Link to="/otherpage">OtherPage</Link>
         </header>
       </div>
       <div>
-        <Route path="/fib" component={Fib} />
-        <Route path="/otherpage" component={OtherPage} />
+          <Route exact path="/" component={Fib} />
+          <Route path="/otherpage" component={OtherPage} />
       </div>
     </Router>
   );
