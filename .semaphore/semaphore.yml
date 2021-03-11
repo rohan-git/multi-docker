@@ -19,10 +19,10 @@ blocks:
         - name: Production Builds
           commands:
             - checkout
-            #- docker build -t rohangit/multi-docker-client -f ./client/Dockerfile ./client
-            #- docker build -t rohangit/multi-docker-nginx -f ./nginx/Dockerfile ./nginx
-            #- docker build -t rohangit/multi-docker-server -f ./server/Dockerfile ./server
-            - docker build -t sampletag1 -f ./worker/Dockerfile ./worker
+            - docker build -t rohangit/multi-docker-client ./client
+            - docker build -t rohangit/multi-docker-nginx ./nginx
+            - docker build -t rohangit/multi-docker-server ./server
+            - docker build -t rohangit/multi-docker-server ./worker
 promotions:
   - name: Promote Built Containers To Docker Hub
     pipeline_file: docker_push.yml
