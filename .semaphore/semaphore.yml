@@ -5,7 +5,7 @@ agent:
     type: e1-standard-2
     os_image: ubuntu1804
 blocks:
-  - name: Development Build For Running Testis on React Client
+  - name: Development Build For Running Tests on React Client
     task:
       jobs:
         - name: Docker Hub
@@ -18,10 +18,10 @@ blocks:
       jobs:
         - name: Production Builds
           commands:
-            - docker build -t rohangit/multi-docker-client ./client
             - docker build -t rohangit/multi-docker-nginx ./nginx
             - docker build -t rohangit/multi-docker-server ./server
             - docker build -t rohangit/multi-docker-worker ./worker
+            - docker build -t rohangit/multi-docker-client ./client
 promotions:
   - name: Promote Built Containers To Docker Hub
     pipeline_file: docker_push.yml
