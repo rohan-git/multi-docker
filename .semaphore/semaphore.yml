@@ -23,8 +23,20 @@ blocks:
             - docker build -t rohangit/multi-docker-nginx ./nginx
             - docker build -t rohangit/multi-docker-server ./server
             - docker build -t rohangit/multi-docker-server ./worker
-promotions:
-  - name: Promote Built Containers To Docker Hub
-    pipeline_file: docker_push.yml
-    auto_promote:
-      when: branch = 'master' AND result = 'passed'
+    task:
+      jobs:
+        - name: 'Push Containers'
+          commands:
+            - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+            # Take those images and push them to docker hub
+            - docker push rohangit/multi-docker-nginx:latest
+            - docker push rohangit/multi-docker-client:latest
+            - docker push rohangit/multi-docker-server:latest
+            - docker push rohangit/multi-docker-worker:latest
+      secrets:
+        - name: docker_credentials
+# promotions:
+#   - name: Promote Built Containers To Docker Hub
+#     pipeline_file: docker_push.yml
+#     auto_promote:
+#       when: branch = 'master' AND result = 'passed'

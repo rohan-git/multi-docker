@@ -10,11 +10,12 @@ blocks:
       jobs:
         - name: 'Push Containers'
           commands:
-            - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-            # Take those images and push them to docker hub
-            - docker push rohangit/multi-docker-nginx:latest
-            - docker push rohangit/multi-docker-client:latest
-            - docker push rohangit/multi-docker-server:latest
-            - docker push rohangit/multi-docker-worker:latest
+            - echo "Will replace this with push"
+            # - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+            # # Take those images and push them to docker hub
+            # - docker push rohangit/multi-docker-nginx:latest
+            # - docker push rohangit/multi-docker-client:latest
+            # - docker push rohangit/multi-docker-server:latest
+            # - docker push rohangit/multi-docker-worker:latest
       secrets:
         - name: docker_credentials
