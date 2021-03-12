@@ -58,7 +58,7 @@ blocks:
           commands:
             - checkout
             - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-            - docker build -t rohangit/multi-docker-server ./worker
+            - docker build -t rohangit/multi-docker-worker ./worker
             - docker push docker.io/rohangit/multi-docker-worker:latest
       secrets:
         - name: docker_credentials
