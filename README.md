@@ -3,7 +3,8 @@
 Issues during creation:--
 
 NGNIX
-- No spacing between "server client:port"
+- No spacing should exist between "server client:port"
 
 SEMAPHORE
-- Seems to discard the build, it must be sent to Docker etc... right after building in the same Step
+- Use the same step for building and pushing to Docker etc...
+- Semaphore seems to discard the build
