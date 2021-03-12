@@ -16,3 +16,5 @@ blocks:
             - docker push rohangit/multi-docker-nginx
             - docker push rohangit/multi-docker-server
             - docker push rohangit/multi-docker-worker
+      secrets:
+        - name: docker_credentials
