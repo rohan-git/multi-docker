@@ -26,3 +26,5 @@ blocks:
 promotions:
   - name: Promote Built Containers To Docker Hub
     pipeline_file: docker_push.yml
+    auto_promote:
+      when: branch = 'master' AND result = 'passed'
