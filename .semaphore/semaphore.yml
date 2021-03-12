@@ -23,8 +23,6 @@ blocks:
             - docker build -t rohangit/multi-docker-nginx ./nginx
             - docker build -t rohangit/multi-docker-server ./server
             - docker build -t rohangit/multi-docker-server ./worker
-    task:
-      jobs:
         - name: 'Push Containers'
           commands:
             - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
