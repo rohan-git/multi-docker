@@ -12,8 +12,8 @@ blocks:
           commands:
             - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
             # Take those images and push them to docker hub
-            - docker push rohangit/multi-docker-client
             - docker push rohangit/multi-docker-nginx
+            - docker push rohangit/multi-docker-client
             - docker push rohangit/multi-docker-server
             - docker push rohangit/multi-docker-worker
       secrets:
