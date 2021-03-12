@@ -24,8 +24,8 @@ blocks:
             - docker build -t rohangit/multi-docker-server ./server
             - docker build -t rohangit/multi-docker-server ./worker
   - name: 'Push to Docker Hub'
-      task:
-        jobs:
+    task:
+      jobs:
         - name: 'Push Containers'
           commands:
             - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
@@ -36,8 +36,3 @@ blocks:
             - docker push docker.io/rohangit/multi-docker-worker:latest
       secrets:
         - name: docker_credentials
-# promotions:
-#   - name: Promote Built Containers To Docker Hub
-#     pipeline_file: docker_push.yml
-#     auto_promote:
-#       when: branch = 'master' AND result = 'passed'
