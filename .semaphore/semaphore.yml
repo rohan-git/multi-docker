@@ -4,64 +4,63 @@ agent:
   machine:
     type: e1-standard-2
     os_image: ubuntu1804
-blocks:
 
-  - name: Development Build For Running Tests on React Client
-    task:
-      jobs:
-        - name: Docker Hub
-          commands:
-            - checkout
-            - docker build -t sampletag -f ./client/Dockerfile.dev ./client
-            - docker run -e CI=true sampletag npm run test
+#   - name: Development Build For Running Tests on React Client
+#     task:
+#       jobs:
+#         - name: Docker Hub
+#           commands:
+#             - checkout
+#             - docker build -t sampletag -f ./client/Dockerfile.dev ./client
+#             - docker run -e CI=true sampletag npm run test
 
-  - name: 'Build & Push 0'
-    task:
-      jobs:
-        - name: Production Builds
-          commands:
-            - checkout
-            - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-            - docker build -t rohangit/multi-docker-client ./client
-            - docker push docker.io/rohangit/multi-docker-client:latest
-      secrets:
-        - name: docker_credentials
+#   - name: 'Build & Push CLient'
+#     task:
+#       jobs:
+#         - name: Production Builds
+#           commands:
+#             - checkout
+#             - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+#             - docker build -t rohangit/multi-docker-client ./client
+#             - docker push docker.io/rohangit/multi-docker-client:latest
+#       secrets:
+#         - name: docker_credentials
 
-  - name: 'Build & Push 1'
-    task:
-      jobs:
-        - name: 'Push Containers'
-          commands:
-            - checkout
-            - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-            - docker build -t rohangit/multi-docker-nginx ./nginx
-            - docker push docker.io/rohangit/multi-docker-nginx:latest
-      secrets:
-        - name: docker_credentials
+#   - name: 'Build & Push Nginx'
+#     task:
+#       jobs:
+#         - name: 'Push Containers'
+#           commands:
+#             - checkout
+#             - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+#             - docker build -t rohangit/multi-docker-nginx ./nginx
+#             - docker push docker.io/rohangit/multi-docker-nginx:latest
+#       secrets:
+#         - name: docker_credentials
 
-  - name: 'Build & Push 2'
-    task:
-      jobs:
-        - name: 'Push Containers'
-          commands:
-            - checkout
-            - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-            - docker build -t rohangit/multi-docker-server ./server
-            - docker push docker.io/rohangit/multi-docker-server:latest
-      secrets:
-        - name: docker_credentials
+#   - name: 'Build & Push Server'
+#     task:
+#       jobs:
+#         - name: 'Push Containers'
+#           commands:
+#             - checkout
+#             - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+#             - docker build -t rohangit/multi-docker-server ./server
+#             - docker push docker.io/rohangit/multi-docker-server:latest
+#       secrets:
+#         - name: docker_credentials
 
-  - name: 'Build & Push 3'
-    task:
-      jobs:
-        - name: 'Push Containers'
-          commands:
-            - checkout
-            - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-            - docker build -t rohangit/multi-docker-worker ./worker
-            - docker push docker.io/rohangit/multi-docker-worker:latest
-      secrets:
-        - name: docker_credentials
+#   - name: 'Build & Push Worker'
+#     task:
+#       jobs:
+#         - name: 'Push Containers'
+#           commands:
+#             - checkout
+#             - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+#             - docker build -t rohangit/multi-docker-worker ./worker
+#             - docker push docker.io/rohangit/multi-docker-worker:latest
+#       secrets:
+#         - name: docker_credentials
 promotions:
   - name: Elastic Bean Deployment
     pipeline_file: semaphore-multidocker-aws.yml
