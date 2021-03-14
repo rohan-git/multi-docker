@@ -62,3 +62,6 @@ blocks:
             - docker push docker.io/rohangit/multi-docker-worker:latest
       secrets:
         - name: docker_credentials
+promotions:
+  - name: Elastic Bean Deployment
+    pipeline_file: semaphore-multidocker-aws.yml
