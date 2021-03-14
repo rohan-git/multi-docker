@@ -5,6 +5,14 @@ agent:
     type: e1-standard-2
     os_image: ubuntu1804
 
+blocks:
+  - name: Testing promotion directly
+    task:
+      jobs:
+      - name: Test
+        commands:
+          - echo "testing promotions"
+
 #   - name: Development Build For Running Tests on React Client
 #     task:
 #       jobs:
