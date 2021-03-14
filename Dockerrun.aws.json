@@ -24,7 +24,7 @@
             "image": "docker.io/rohangit/multi-docker-nginx:latest",
             "hostname": "nginx",
             "essential": true,
-            "portMapping":[
+            "portMapping": [
                 { 
                     "hostPort": 80, 
                     "containerPort": 80 
