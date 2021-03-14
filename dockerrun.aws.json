@@ -1,0 +1,29 @@
+{
+    "AWSEBDockerrunVersion": 2,
+    "containerDefinitions": [
+        {
+            "name": "client",
+            "image": "docker.io/rohangit/multi-docker-client:latest",
+            "hostname": "client",
+            "essential": false
+        },
+        {
+            "name": "server",
+            "image": "docker.io/rohangit/multi-docker-server:latest",
+            "hostname": "api",
+            "essential": false
+        },
+        {
+            "name": "worker",
+            "image": "docker.io/rohangit/multi-docker-worker:latest",
+            "hostname": "worker",
+            "essential": false
+        },
+        {
+            "name": "nginx",
+            "image": "docker.io/rohangit/multi-docker-nginx:latest",
+            "hostname": "nginx",
+            "essential": true
+        }
+    ]
+}
