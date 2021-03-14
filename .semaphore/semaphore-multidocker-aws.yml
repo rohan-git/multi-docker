@@ -12,11 +12,11 @@ blocks:
         - name: aws-credentials
       env_vars:
         - name: S3_BUCKET_NAME
-          value: elasticbeanstalk-us-east-1-680865362665
+          value: multi-docker-1
         - name: EB_APP_NAME
-          value: multi-docker
+          value: multi-docker-application
         - name: EB_ENV_NAME
-          value: Multidocker-env-1
+          value: Multidockerapplication-env
       jobs:
         - name: "Deployment"
           commands:
