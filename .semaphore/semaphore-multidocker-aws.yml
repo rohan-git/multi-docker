@@ -21,7 +21,7 @@ blocks:
         - name: "Deployment"
           commands:
             - checkout
-            - zip -r "$EB_APP_NAME".zip Dockerrun.aws.json
+            - echo "Zipping your newest code from git"; git archive -o "$EB_APP_NAME".zip HEAD
             - export EB_VERSION=`git rev-parse --short HEAD`-`date +%s`
             - aws s3 cp "$EB_APP_NAME".zip s3://$S3_BUCKET_NAME/"$EB_APP_NAME"/"$EB_VERSION".zip
             - aws elasticbeanstalk create-application-version --application-name "$EB_APP_NAME" --version-label "$EB_VERSION" --source-bundle S3Bucket=$S3_BUCKET_NAME,S3Key="$EB_APP_NAME/$EB_VERSION.zip" --description "`git show -s --format=%s HEAD | cut -c -200`"
